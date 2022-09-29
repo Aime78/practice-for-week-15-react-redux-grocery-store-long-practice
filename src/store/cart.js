@@ -5,6 +5,8 @@ const DECREASEPRODUCE = "produce/decreaseproduce";
 const NUMBERPRODUCE = "produce/numberproduce";
 const EMPTYCART = "produce/emptycart";
 
+export const getCart = (state) => state.cart;
+
 export const emptyCart = () => {
   return {
     type: EMPTYCART,
@@ -53,9 +55,14 @@ function cartReducer(state = {}, action) {
 
     case ADDPRODUCE:
       const addId = action.id;
-      const addObj = { ...state };
+      const addObj = {};
+      let tryObj = {};
       addObj[addId] = { id: addId, count: 1 };
-      return addObj;
+      tryObj[addId] = { id: addId, count: 1 };
+      console.log(tryObj);
+      tryObj = Object.assign(tryObj[addId], state);
+      console.log(tryObj);
+      return { ...addObj, ...state };
 
     case REMOVEPRODUCE:
       const removeId = action.id;

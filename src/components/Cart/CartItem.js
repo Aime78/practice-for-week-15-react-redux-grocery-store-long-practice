@@ -5,10 +5,11 @@ import {
   increaseProduce,
   decreaseProduce,
   numberProduce,
+  getCart,
 } from "../../store/cart";
 
 function CartItem({ item }) {
-  const countState = useSelector((state) => state.cart);
+  const countState = useSelector(getCart);
   const id = item.id;
   const count = countState[id].count;
 

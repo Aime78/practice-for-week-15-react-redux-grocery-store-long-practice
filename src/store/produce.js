@@ -3,6 +3,8 @@ import produceData from "../mockData/produce.json";
 const POPULATE = "produce/POPULATE";
 const TOGGLELIKE = "produce/togglelike";
 
+export const getAllProduce = (state) => Object.values(state.produce);
+
 export const populateProduce = () => {
   return {
     type: POPULATE,
